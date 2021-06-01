@@ -1,3 +1,6 @@
+'''
+Copied from https://github.com/kacperkan/ucsgnet
+'''
 import abc
 import logging
 import multiprocessing as mp
