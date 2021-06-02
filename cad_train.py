@@ -78,7 +78,6 @@ for epoch in range(config.epochs):
         dist = dist.to(device)
 
         pred = net(image, pt)
-        pred = torch.tensor(pred, requires_grad=True)
         loss, each_loss = total_loss(pred, dist, net.converter, net.csg_layer, 
                                             net.evaluator, config.use_planes) 
         loss.backward()
