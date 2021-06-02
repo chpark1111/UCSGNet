@@ -1,14 +1,15 @@
 import logging
-import os
+import os, random
 import numpy as np
 from numpy.lib.type_check import imag
 import torch
+import torch.nn.functional
 import torch.optim as optim
 import tensorboard_logger
 from tensorboard_logger import log_value
 
 from utils.read_config import Config
-from utils.loss import total_loss, chamfer
+from utils.loss import total_loss, chamfer, iou
 from dataset import CAD_train_dataloader, CAD_valid_dataloader, CAD_test_dataloader
 from models.UCSGNet import UCSGNet
 from tqdm import tqdm
@@ -56,7 +57,7 @@ if not os.path.exists('trained_models'):
     os.makedirs('trained_models')
 
 #Training, Testing of unsupervised learning
-prev_CD = 16
+prev_CD = 100
 
 for epoch in range(config.epochs):
     
@@ -71,17 +72,19 @@ for epoch in range(config.epochs):
     for batch in train_dataset:
         optimizer.zero_grad()
         
-        image, pt, distances, bounding_volume = batch
+        image, pt, dist, bounding_volume = batch
         image = image.to(device)
         pt = pt.to(device)
-        distances = distances.to(device)
-        
+        dist = dist.to(device)
+
         pred = net(image, pt)
-        loss, each_loss = total_loss(pred, distances, net.converter, net.csg_layer, 
+        pred = torch.tensor(pred, requires_grad=True)
+        loss, each_loss = total_loss(pred, dist, net.converter, net.csg_layer, 
                                             net.evaluator, config.use_planes) 
         loss.backward()
 
         optimizer.step()
+
         train_loss += loss.item()
         n += 1
  
@@ -99,34 +102,43 @@ for epoch in range(config.epochs):
 
     valid_loss = 0.0
     valid_CD = 0.0
+    valid_IoU = 0.0
     n = 0.0
     for batch in valid_dataset:
         with torch.no_grad():
-            image, pt, distances, bounding_volume = batch
+            image, pt, dist, bounding_volume = batch
             image = image.to(device)
             pt = pt.to(device)
-            distances = distances.to(device)
+            dist = dist.to(device)
             pred = net(image, pt)
 
-            loss, each_loss = total_loss(pred, distances, net.converter, net.csg_layer, 
+            loss, each_loss = total_loss(pred, dist, net.converter, net.csg_layer, 
                                             net.evaluator, config.use_planes) 
             valid_loss += loss.item()
             n += 1
-            CD = chamfer(net.binarize(pred).reshape(-1,64,64).clone().cpu().numpy(),
-                                image.squeeze().clone().cpu().numpy()) / image.shape[0]
+
+            pred = net.binarize(pred).reshape(-1, 64, 64).clone().cpu().numpy()
+            dist = dist.reshape(-1, 64, 64).clone().cpu().numpy()
+
+            CD = chamfer(pred, dist)
+            IoU = iou(pred, dist)
             valid_CD += CD
-        pbar.set_description('{} {} Loss: {:f}, CD: {:f}'.format(epoch_str, 'Valid', loss.item(), CD))
+            valid_IoU += IoU
+
+        pbar.set_description('{} {} Loss: {:f}, CD: {:f}, IoU: {:f}%'.format(epoch_str, 'Valid', loss.item(), CD, IoU*100))
         pbar.update(image.shape[0])
-
+    
     pbar.close()
-
+    
     mean_valid_loss = valid_loss / n
     valid_CD = valid_CD / n 
+    valid_IoU = valid_IoU / n
     log_value('valid_loss', mean_valid_loss, epoch)
     log_value('chamfer_distance', valid_CD, epoch)
+    log_value('IoU', valid_IoU, epoch)
 
-    logger.info("Epoch {}/{} => valid_loss: {:f}, CD: {:f}".format(epoch, config.epochs, mean_valid_loss, valid_CD))
-    print("Epoch {}/{} => valid_loss: {:f}, CD: {:f}".format(epoch, config.epochs, mean_valid_loss, valid_CD))
+    logger.info("Epoch {}/{} => valid_loss: {:f}, CD: {:f}, IoU: {:f}%".format(epoch, config.epochs, mean_valid_loss, valid_CD, valid_IoU*100))
+    print("Epoch {}/{} => valid_loss: {:f}, CD: {:f}, IoU: {:f}%".format(epoch, config.epochs, mean_valid_loss, valid_CD, valid_IoU*100))
 
     if prev_CD > valid_CD:
         logger.info("Saving the Model based on Chamfer Distance: %f"%(valid_CD))

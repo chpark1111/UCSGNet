@@ -72,5 +72,5 @@ class Converter(nn.Module):
         self.max_val = max_val
 
     def forward(self, x):
-        return (x / (self.alpha.clamp(min = FLOAT_EPS))).clamp(self.min_val, self.max_val)
+        return (x / self.alpha.clamp(min = FLOAT_EPS)).clamp(self.min_val, self.max_val)
 

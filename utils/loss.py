@@ -105,8 +105,11 @@ def chamfer(images1, images2):
     distances = distances / 2.0
     # This is a fixed penalty for wrong programs
     distances[defaulter_list] = 16
-    return np.sum(distances)
+    return np.mean(distances, axis=0)
 
+def iou(y_pred: np.ndarray, y_true: np.ndarray) -> np.ndarray:
+    iou_val = (y_true * y_pred).sum(axis=(1, 2)) / ((y_true + y_pred).clip(0, 1).sum(axis=(1, 2)) + 1.0)
+    return np.mean(iou_val, axis=0)
 
 
 

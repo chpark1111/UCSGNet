@@ -10,7 +10,7 @@ def gumbel_softmax(prob, temp=1.0, dim=-2):
     sample = torch.rand_like(prob).clamp_min(FLOAT_EPS)
     gumbel_sample = -torch.log(-torch.log(sample) + FLOAT_EPS)
     if isinstance(temp, torch.Tensor):
-        temp = temp.clamp(min = FLOAT_EPS) 
+        temp = temp.clamp(min = 1e-5) 
 
     return ((torch.log(prob + FLOAT_EPS) + gumbel_sample) / temp).softmax(dim=dim)
 

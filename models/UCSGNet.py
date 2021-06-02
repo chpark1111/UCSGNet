@@ -1,6 +1,5 @@
 import torch
 import torch.nn  as nn
-import torch.nn.functional as F
 from models.model_2d import Encoder, Decoder, Converter
 from models.shapeeval import CompoundShapeEval
 from models.CSGlayers import CSG_layer
@@ -11,7 +10,7 @@ class UCSGNet(nn.Module):
         self.encoder = Encoder(args.latent_sz)
         self.decoder = Decoder(args.latent_sz)
         self.evaluator = CompoundShapeEval(args.use_planes, args.num_shape_type, args.num_dim)
-        self.converter = Converter(args.latent_sz)
+        self.converter = Converter()
 
         self.num_shape_type = args.num_shape_type
         self.out_shape_layer = args.out_shape_layer
@@ -46,8 +45,9 @@ class UCSGNet(nn.Module):
                     return_intermediate_output_csg=False, return_scaled_distances_to_shapes=False):
         batch_sz = img.shape[0]
         latent_vec = self.encoder(img)
+        
         shape_param = self.decoder(latent_vec) #[batch, latent_sz * 8]
-
+        
         if self.use_planes:
             sdf_shape = self.evaluator(shape_param, pt) #[batch, num_pt, num_shape]
         else:
@@ -56,9 +56,10 @@ class UCSGNet(nn.Module):
             sdf_shape = sdf_shape.permute((0, 2, 1)) #[batch, num_pt, num_shape]
         
         init_sdf = 1 - self.converter(sdf_shape) #[batch, num_pt, num_shape]
-        last_sdf = init_sdf
-        pred_sdf = [init_sdf]
 
+        last_sdf = init_sdf
+        pred_sdf = [last_sdf]
+        
         latent_vec = self.gru(latent_vec, 
                     self.gru_hidden_vec.expand(batch_sz, self.gru_hidden_vec.shape[1]))
         
