@@ -1,7 +1,5 @@
 import logging
-import os, random
-import numpy as np
-from numpy.lib.type_check import imag
+import os
 import torch
 import torch.nn.functional
 import torch.optim as optim
@@ -10,7 +8,7 @@ from tensorboard_logger import log_value
 
 from utils.read_config import Config
 from utils.loss import total_loss, chamfer, iou
-from dataset import CAD_train_dataloader, CAD_valid_dataloader, CAD_test_dataloader
+from dataset import CAD_train_dataloader, CAD_valid_dataloader
 from models.UCSGNet import UCSGNet
 from tqdm import tqdm
 
@@ -81,7 +79,6 @@ for epoch in range(config.epochs):
         loss, each_loss = total_loss(pred, dist, net.converter, net.csg_layer, 
                                             net.evaluator, config.use_planes) 
         loss.backward()
-
         optimizer.step()
 
         train_loss += loss.item()
