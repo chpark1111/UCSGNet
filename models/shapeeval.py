@@ -183,13 +183,13 @@ class CompoundEval(nn.Module):
         return len(self.parts)
 
     def get_all_shift_vectors(self):
-        return torch.cat([part.shift_vector_prediction for part in self.parts], dim=1)
+        return torch.cat([part.shift_vector_prediction() for part in self.parts], dim=1)
 
     def get_all_rotation_vectors(self):
-        return torch.cat([part.rotation_params_prediction for part in self.parts], dim=1)
+        return torch.cat([part.rotation_params_prediction() for part in self.parts], dim=1)
 
     def get_all_last_predicted_parameters_of_shapes(self):
-        return [(part.__class__.__name__, part.last_predicted_parameters_of_shape)
+        return [(part.__class__.__name__, part.last_predicted_parameters_of_shape())
             for part in self.parts]
 
     def clear_translation_vectors(self):

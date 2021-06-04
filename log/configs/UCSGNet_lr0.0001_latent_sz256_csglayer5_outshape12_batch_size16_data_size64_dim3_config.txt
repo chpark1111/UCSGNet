@@ -9,7 +9,7 @@ model_name = UCSGNet_lr{}_latent_sz{}_csglayer{}_outshape{}_batch_size{}_data_si
 preload_model = False
 
 # path to the pre-trained model
-pretrain_model_path = "trained_models/temp1.pth"
+pretrain_model_path = trained_models/temp1.pth
 
 #Dimension of CSG shape
 num_dim = 3
@@ -37,7 +37,7 @@ beta1 = 0.5
 beta2 = 0.99
 
 #Determines the points sampled from data 64, 32, 16
-data_size = 32
+data_size = 64
 
 # number of sdf sample per batch
 points_per_sample_in_batch = 1024
@@ -55,7 +55,7 @@ use_planes = False
 num_csg_layer = 5
 
 #Number of worker in dataloader
-worker = 8
+worker = 0
 
 #Dataloader path
-path = "data/hdf5/"
+path = data/hdf5/

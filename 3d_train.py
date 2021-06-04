@@ -78,6 +78,7 @@ for epoch in range(config.epochs):
         pred = net(image, pt)
         pred = pred.squeeze(dim=-1)
         dist = dist.squeeze(dim=-1)
+
         loss, each_loss = total_loss(pred, dist, net.converter, net.csg_layer, 
                                             net.evaluator, config.use_planes) 
         loss.backward()
