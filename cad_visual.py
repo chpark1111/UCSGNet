@@ -4,7 +4,7 @@ from visualize.visualize_cad import visualize_multiple
 parser = argparse.ArgumentParser()
 parser.add_argument(
     "--ckpt",
-    default="trained_results/cad/best.pth",
+    default="trained_results/cad/cad_best.pth",
     type=str,
     help="Path to ckpt path",
     dest="checkpoint_path",
