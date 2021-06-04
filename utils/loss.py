@@ -20,8 +20,9 @@ def total_loss(pred, gt, converter, csg_layer, evaluators, uses_planes):
     if not uses_planes:
         for eval in evaluators:
             parameter_loss += (-eval.param).clamp(min = 0.0).sum(dim=(1, 2)).mean(dim=0) #[batch_sz, num_shape, num_param]
-            translation_loss += torch.linalg.norm(eval.shift, dim=-1).square().clamp(min=0.5).sum(dim=1).mean(dim=0) #[batch_sz, num_shape, num_dim]
+            translation_loss += ((eval.shift_vector_prediction().norm(dim=-1) - 0.5).relu() ** 2).mean() #[batch_sz, num_shape, num_dim]
 
+        translation_loss = lambda_t*translation_loss 
         out['param'] = parameter_loss
         out['trans'] = translation_loss
 
@@ -29,13 +30,14 @@ def total_loss(pred, gt, converter, csg_layer, evaluators, uses_planes):
     if converter.alpha <= 0.05:
         for layer in csg_layer:
             temp_loss += (torch.abs(layer.temp).clamp_min(FLOAT_EPS) - FLOAT_EPS)
-        out['temp'] = temp_loss
+    temp_loss = lambda_tau*temp_loss
+    out['temp'] = temp_loss
 
-    convertor_loss = (torch.abs(converter.alpha).clamp_min(FLOAT_EPS) - FLOAT_EPS)
+    convertor_loss = lambda_alpha*(torch.abs(converter.alpha).clamp_min(FLOAT_EPS) - FLOAT_EPS)
     out['conv'] = convertor_loss
 
-    total_loss = (recon_loss + parameter_loss + lambda_t*translation_loss 
-                            + lambda_alpha*convertor_loss + temp_loss*lambda_tau)
+    total_loss = (recon_loss + parameter_loss + translation_loss 
+                            + convertor_loss + temp_loss)
     return total_loss, out
 
 '''
@@ -111,70 +113,24 @@ def iou(y_pred: np.ndarray, y_true: np.ndarray) -> np.ndarray:
     iou_val = (y_true * y_pred).sum(axis=(1, 2)) / ((y_true + y_pred).clip(0, 1).sum(axis=(1, 2)) + 1.0)
     return np.mean(iou_val, axis=0)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
+def chamfer_distance_3d(gt_points: torch.Tensor, pred_points: torch.Tensor):
+    gt_num_points = gt_points.shape[0]
+    pred_num_points = pred_points.shape[0]
+
+    points_gt_matrix = gt_points.unsqueeze(1).expand(
+        [gt_points.shape[0], pred_num_points, gt_points.shape[-1]]
+    )
+    points_pred_matrix = pred_points.unsqueeze(0).expand(
+        [gt_num_points, pred_points.shape[0], pred_points.shape[-1]]
+    )
+
+    distances = (points_gt_matrix - points_pred_matrix).pow(2).sum(dim=-1)
+    match_pred_gt = distances.argmin(dim=0)
+    match_gt_pred = distances.argmin(dim=1)
+
+    dist_pred_gt = (pred_points - gt_points[match_pred_gt]).pow(2).sum(dim=-1).mean()
+    dist_gt_pred = (gt_points - pred_points[match_gt_pred]).pow(2).sum(dim=-1).mean()
+
+    chamfer_distance = dist_pred_gt + dist_gt_pred
+
+    return chamfer_distance.item()

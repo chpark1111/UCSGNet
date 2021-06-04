@@ -9,7 +9,7 @@ model_name = UCSGNet_lr{}_latent_sz{}_csglayer{}_outshape{}_dim{}
 preload_model = False
 
 # path to the pre-trained model
-pretrain_model_path = "trained_models/temp1.pth"
+pretrain_model_path = trained_models/temp1.pth
 
 #Dimension of CSG shape
 num_dim = 2
@@ -58,4 +58,4 @@ num_csg_layer = 3
 worker = 4
 
 #Dataloader path
-path = "data/cad/cad.h5"
+path = data/cad/cad.h5

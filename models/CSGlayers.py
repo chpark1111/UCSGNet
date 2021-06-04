@@ -8,9 +8,9 @@ FLOAT_EPS = torch.finfo(torch.float32).eps
 
 def gumbel_softmax(prob, temp=1.0, dim=-2):
     sample = torch.rand_like(prob).clamp_min(FLOAT_EPS)
-    gumbel_sample = -torch.log(-torch.log(sample) + FLOAT_EPS)
+    gumbel_sample = -torch.log(-torch.log(sample))
     if isinstance(temp, torch.Tensor):
-        temp = temp.clamp(min = 1e-5) 
+        temp = temp.clamp(min = 1e-3) 
 
     return ((torch.log(prob + FLOAT_EPS) + gumbel_sample) / temp).softmax(dim=dim)
 
@@ -27,9 +27,11 @@ class CSG_layer(nn.Module):
                                     self.num_shape_out), requires_grad = True)
         self.K_right = nn.Parameter(torch.Tensor(self.latent_sz, self.num_shape_in, 
                                     self.num_shape_out), requires_grad = True)
-        self.V_encode: t.Optional[torch.Tensor] = None
         nn.init.normal_(self.K_left, std=0.1)
         nn.init.normal_(self.K_right, std=0.1)
+
+        self.V_encode: t.Optional[torch.Tensor] = None
+        self.sampled_shape: t.Optional[torch.Tensor] = None
         
         self.temp = nn.Parameter(torch.Tensor(1), requires_grad = True)
         nn.init.constant_(self.temp, 2.)
@@ -52,6 +54,7 @@ class CSG_layer(nn.Module):
         self.V_encode = self.Vmask_encoder(V_side.reshape(batch_sz, -1))
 
         V_mask = gumbel_softmax(V_side, self.temp.clamp(min=FLOAT_EPS, max=2), dim=-2) #[batch, 2, 1, num_shape_in, num_shape_out]
+        self.sampled_shape = V_mask
         shape_mask = V_mask.split(split_size=1, dim=1)
         y = x.unsqueeze(dim=-1) #[batch, num_pt, num_shape, 1]
 

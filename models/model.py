@@ -34,6 +34,41 @@ class Encoder(nn.Module):
 
         return y
 
+class Encoder_3d(nn.Module):
+    def __init__(self, latent_sz=256):
+        super(Encoder_3d, self).__init__()
+
+        self.latent_sz = latent_sz
+        
+        self.conv1 = nn.Conv3d(1, self.latent_sz // 8, 4, 2, padding = 1)
+        self.conv2 = nn.Conv3d(self.latent_sz // 8, self.latent_sz // 4, 4, 2, padding = 1)
+        self.conv3 = nn.Conv3d(self.latent_sz // 4, self.latent_sz // 2, 4, 2, padding = 1)
+        self.conv4 = nn.Conv3d(self.latent_sz // 2, self.latent_sz, 4, 2, padding = 1)
+        self.conv5 = nn.Conv3d(self.latent_sz, self.latent_sz, 4, 2)
+        self.lrelu = nn.LeakyReLU(0.01)
+
+        for m in self.modules():
+            if isinstance(m, nn.Conv3d):
+                nn.init.xavier_uniform_(m.weight)
+                nn.init.constant_(m.bias, 0)
+
+    def forward(self, x):
+        '''
+        Input: (batch_size, in_ch, 64, 64, 64)
+        Outputs: (batch_size, latent_sz)
+        '''
+
+        y = self.lrelu(self.conv1(x))
+        y = self.lrelu(self.conv2(y))
+        y = self.lrelu(self.conv3(y))
+        y = self.lrelu(self.conv4(y))
+        y = self.conv5(y)
+        y = y.reshape(y.shape[0], -1)
+
+        assert y.shape == torch.Size([y.shape[0], self.latent_sz])
+
+        return y
+    
 class Decoder(nn.Module):
     def __init__(self, latent_sz=256):
         super(Decoder, self).__init__()

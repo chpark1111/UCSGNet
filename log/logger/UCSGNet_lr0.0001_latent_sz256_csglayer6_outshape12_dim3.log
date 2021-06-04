@@ -1,0 +1,108 @@
+2021-06-03 15:06:20,939:__main__:{'debug': 'False', 'comment': '', 'train': {'model_name': 'UCSGNet_lr{}_latent_sz{}_csglayer{}_outshape{}_dim{}', 'preload_model': 'False', 'pretrain_model_path': 'trained_models/temp1.pth', 'num_dim': '3', 'num_epochs': '500', 'batch_size': '16', 'latent_sz': '256', 'lr': '1e-4', 'optim': 'adam', 'num_shape_type': '64', 'beta1': '0.5', 'beta2': '0.99', 'data_size': '32', 'points_per_sample_in_batch': '1024', 'out_shape_layer': '12', 'threshold': '0.5', 'use_planes': 'False', 'num_csg_layer': '6', 'worker': '4', 'path': 'data/hdf5/'}}
+2021-06-03 15:14:23,767:__main__:Epoch 0/500 => valid_loss: 0.194653
+2021-06-03 15:14:23,768:__main__:Saving the Model based on Valid Loss: 0.194653
+2021-06-03 15:22:02,220:__main__:Epoch 1/500 => valid_loss: 0.155201
+2021-06-03 15:22:02,222:__main__:Saving the Model based on Valid Loss: 0.155201
+2021-06-03 15:29:57,664:__main__:Epoch 2/500 => valid_loss: 0.129525
+2021-06-03 15:29:57,666:__main__:Saving the Model based on Valid Loss: 0.129525
+2021-06-03 15:37:54,724:__main__:Epoch 3/500 => valid_loss: 0.106152
+2021-06-03 15:37:54,727:__main__:Saving the Model based on Valid Loss: 0.106152
+2021-06-03 15:45:58,799:__main__:Epoch 4/500 => valid_loss: 0.081694
+2021-06-03 15:45:58,800:__main__:Saving the Model based on Valid Loss: 0.081694
+2021-06-03 15:54:09,146:__main__:Epoch 5/500 => valid_loss: 1.221970
+2021-06-03 16:02:18,467:__main__:Epoch 6/500 => valid_loss: 1.086156
+2021-06-03 16:10:32,568:__main__:Epoch 7/500 => valid_loss: 0.953823
+2021-06-03 16:18:48,851:__main__:Epoch 8/500 => valid_loss: 0.821910
+2021-06-03 16:27:03,866:__main__:Epoch 9/500 => valid_loss: 0.693165
+2021-06-03 16:35:22,870:__main__:Epoch 10/500 => valid_loss: 0.563913
+2021-06-03 16:43:34,721:__main__:Epoch 11/500 => valid_loss: 0.435593
+2021-06-03 16:51:33,587:__main__:Epoch 12/500 => valid_loss: 0.304832
+2021-06-03 16:59:16,540:__main__:Epoch 13/500 => valid_loss: 0.171432
+2021-06-03 17:07:30,710:__main__:Epoch 14/500 => valid_loss: 0.062298
+2021-06-03 17:07:30,711:__main__:Saving the Model based on Valid Loss: 0.062298
+2021-06-03 17:16:55,399:__main__:Epoch 15/500 => valid_loss: 0.060488
+2021-06-03 17:16:55,401:__main__:Saving the Model based on Valid Loss: 0.060488
+2021-06-03 17:25:00,279:__main__:Epoch 16/500 => valid_loss: 0.061470
+2021-06-03 17:32:42,488:__main__:Epoch 17/500 => valid_loss: 0.058380
+2021-06-03 17:32:42,489:__main__:Saving the Model based on Valid Loss: 0.058380
+2021-06-03 17:40:16,425:__main__:Epoch 18/500 => valid_loss: 0.057397
+2021-06-03 17:40:16,428:__main__:Saving the Model based on Valid Loss: 0.057397
+2021-06-03 17:47:47,388:__main__:Epoch 19/500 => valid_loss: 0.057837
+2021-06-03 17:55:15,509:__main__:Epoch 20/500 => valid_loss: 0.055907
+2021-06-03 17:55:15,511:__main__:Saving the Model based on Valid Loss: 0.055907
+2021-06-03 18:02:41,859:__main__:Epoch 21/500 => valid_loss: 0.056069
+2021-06-03 18:10:28,168:__main__:Epoch 22/500 => valid_loss: 0.056107
+2021-06-03 18:18:53,467:__main__:Epoch 23/500 => valid_loss: 0.053875
+2021-06-03 18:18:53,471:__main__:Saving the Model based on Valid Loss: 0.053875
+2021-06-03 18:27:03,786:__main__:Epoch 24/500 => valid_loss: 0.053989
+2021-06-03 18:34:52,244:__main__:Epoch 25/500 => valid_loss: 0.054720
+2021-06-03 18:42:31,220:__main__:Epoch 26/500 => valid_loss: 0.053458
+2021-06-03 18:42:31,222:__main__:Saving the Model based on Valid Loss: 0.053458
+2021-06-03 18:50:08,179:__main__:Epoch 27/500 => valid_loss: 0.054318
+2021-06-03 18:57:37,774:__main__:Epoch 28/500 => valid_loss: 0.053163
+2021-06-03 18:57:37,775:__main__:Saving the Model based on Valid Loss: 0.053163
+2021-06-03 19:05:03,546:__main__:Epoch 29/500 => valid_loss: 0.052282
+2021-06-03 19:05:03,547:__main__:Saving the Model based on Valid Loss: 0.052282
+2021-06-03 19:12:29,932:__main__:Epoch 30/500 => valid_loss: 0.051691
+2021-06-03 19:12:29,933:__main__:Saving the Model based on Valid Loss: 0.051691
+2021-06-03 19:20:12,376:__main__:Epoch 31/500 => valid_loss: 0.051428
+2021-06-03 19:20:12,377:__main__:Saving the Model based on Valid Loss: 0.051428
+2021-06-03 19:28:36,320:__main__:Epoch 32/500 => valid_loss: 0.052292
+2021-06-03 19:36:52,728:__main__:Epoch 33/500 => valid_loss: 0.051212
+2021-06-03 19:36:52,729:__main__:Saving the Model based on Valid Loss: 0.051212
+2021-06-03 19:44:46,585:__main__:Epoch 34/500 => valid_loss: 0.051424
+2021-06-03 19:52:23,350:__main__:Epoch 35/500 => valid_loss: 0.050955
+2021-06-03 19:52:23,350:__main__:Saving the Model based on Valid Loss: 0.050955
+2021-06-03 19:59:56,455:__main__:Epoch 36/500 => valid_loss: 0.051001
+2021-06-03 20:07:27,204:__main__:Epoch 37/500 => valid_loss: 0.050752
+2021-06-03 20:07:27,206:__main__:Saving the Model based on Valid Loss: 0.050752
+2021-06-03 20:14:56,721:__main__:Epoch 38/500 => valid_loss: 0.050811
+2021-06-03 20:22:25,203:__main__:Epoch 39/500 => valid_loss: 0.050854
+2021-06-03 20:30:12,843:__main__:Epoch 40/500 => valid_loss: 0.049626
+2021-06-03 20:30:12,846:__main__:Saving the Model based on Valid Loss: 0.049626
+2021-06-03 20:38:36,577:__main__:Epoch 41/500 => valid_loss: 0.050248
+2021-06-03 20:46:51,427:__main__:Epoch 42/500 => valid_loss: 0.049759
+2021-06-03 20:54:42,980:__main__:Epoch 43/500 => valid_loss: 0.050801
+2021-06-03 21:02:20,514:__main__:Epoch 44/500 => valid_loss: 0.050324
+2021-06-03 21:09:47,028:__main__:Epoch 45/500 => valid_loss: 0.049999
+2021-06-03 21:17:13,499:__main__:Epoch 46/500 => valid_loss: 0.050267
+2021-06-03 21:24:39,344:__main__:Epoch 47/500 => valid_loss: 0.050068
+2021-06-03 21:32:04,396:__main__:Epoch 48/500 => valid_loss: 0.049309
+2021-06-03 21:32:04,398:__main__:Saving the Model based on Valid Loss: 0.049309
+2021-06-03 21:39:59,261:__main__:Epoch 49/500 => valid_loss: 0.049056
+2021-06-03 21:39:59,263:__main__:Saving the Model based on Valid Loss: 0.049056
+2021-06-03 21:48:24,425:__main__:Epoch 50/500 => valid_loss: 0.049158
+2021-06-03 21:56:24,088:__main__:Epoch 51/500 => valid_loss: 0.049740
+2021-06-03 22:04:07,065:__main__:Epoch 52/500 => valid_loss: 0.049318
+2021-06-03 22:11:41,982:__main__:Epoch 53/500 => valid_loss: 0.048942
+2021-06-03 22:11:41,984:__main__:Saving the Model based on Valid Loss: 0.048942
+2021-06-03 22:19:11,320:__main__:Epoch 54/500 => valid_loss: 0.048711
+2021-06-03 22:19:11,321:__main__:Saving the Model based on Valid Loss: 0.048711
+2021-06-03 22:26:37,009:__main__:Epoch 55/500 => valid_loss: 0.049785
+2021-06-03 22:33:58,969:__main__:Epoch 56/500 => valid_loss: 0.048590
+2021-06-03 22:33:58,971:__main__:Saving the Model based on Valid Loss: 0.048590
+2021-06-03 22:41:43,928:__main__:Epoch 57/500 => valid_loss: 0.048988
+2021-06-03 22:50:48,700:__main__:Epoch 58/500 => valid_loss: 0.048767
+2021-06-03 23:00:59,132:__main__:Epoch 59/500 => valid_loss: 0.048246
+2021-06-03 23:00:59,135:__main__:Saving the Model based on Valid Loss: 0.048246
+2021-06-03 23:09:52,906:__main__:Epoch 60/500 => valid_loss: 0.049176
+2021-06-03 23:18:14,550:__main__:Epoch 61/500 => valid_loss: 0.047894
+2021-06-03 23:18:14,551:__main__:Saving the Model based on Valid Loss: 0.047894
+2021-06-03 23:26:22,787:__main__:Epoch 62/500 => valid_loss: 0.049166
+2021-06-03 23:34:19,699:__main__:Epoch 63/500 => valid_loss: 0.048428
+2021-06-03 23:42:13,438:__main__:Epoch 64/500 => valid_loss: 0.048379
+2021-06-03 23:50:42,348:__main__:Epoch 65/500 => valid_loss: 0.048338
+2021-06-04 00:01:18,758:__main__:Epoch 66/500 => valid_loss: 0.047968
+2021-06-04 00:10:52,448:__main__:Epoch 67/500 => valid_loss: 0.048492
+2021-06-04 00:19:35,997:__main__:Epoch 68/500 => valid_loss: 0.048304
+2021-06-04 00:27:52,379:__main__:Epoch 69/500 => valid_loss: 0.049165
+2021-06-04 00:36:11,159:__main__:Epoch 70/500 => valid_loss: 0.047784
+2021-06-04 00:36:11,159:__main__:Saving the Model based on Valid Loss: 0.047784
+2021-06-04 00:44:47,754:__main__:Epoch 71/500 => valid_loss: 0.048883
+2021-06-04 00:55:30,264:__main__:Epoch 72/500 => valid_loss: 0.048213
+2021-06-04 01:05:26,188:__main__:Epoch 73/500 => valid_loss: 0.047879
+2021-06-04 01:14:13,219:__main__:Epoch 74/500 => valid_loss: 0.047663
+2021-06-04 01:14:13,220:__main__:Saving the Model based on Valid Loss: 0.047663
+2021-06-04 01:22:37,372:__main__:Epoch 75/500 => valid_loss: 0.047962
+2021-06-04 01:30:19,303:__main__:Epoch 76/500 => valid_loss: 0.048393
+2021-06-04 01:38:34,055:__main__:Epoch 77/500 => valid_loss: 0.048433

@@ -61,6 +61,7 @@ class Config(object):
 
         self.path = config["train"]["path"]
 
+        self.data_size = config["train"].as_int("data_size")
     def write_config(self, filename):
         self.config.filename = filename
         self.config.write()

@@ -2,7 +2,7 @@
 Dataloader code from https://github.com/kacperkan/ucsgnet
 and modified by me
 '''
-import math
+import math, os
 import typing as t
 import cv2
 import h5py
@@ -238,3 +238,26 @@ def CAD_valid_dataloader(args) -> DataLoader:
 
 def CAD_test_dataloader(args) -> DataLoader:
     return CAD_dataloader("test", args)
+
+def ShapeNet_dataloader(train_split, args) -> DataLoader:
+    training = True if train_split=="train" else False
+    a_file =  "all_vox256_img_train.hdf5" if training else "all_vox256_img_test.hdf5"
+    points_to_sample = 16 * 16 * 16
+    if args.data_size == 64:
+        points_to_sample *= 4
+    loader = DataLoader(
+        dataset=HdfsDataset3D(
+            os.path.join(args.path, a_file),
+            points_to_sample, args.data_size),
+        batch_size=args.batch_size,
+        shuffle=training,
+        drop_last=training,
+        num_workers=args.worker,
+    )
+    return loader
+
+def ShapeNet_train_dataloader(args) -> DataLoader:
+    return ShapeNet_dataloader("train", args)
+
+def ShapeNet_valid_dataloader(args) -> DataLoader:
+    return ShapeNet_dataloader("valid", args)

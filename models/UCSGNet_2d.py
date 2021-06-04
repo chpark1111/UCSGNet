@@ -1,6 +1,6 @@
 import torch
 import torch.nn  as nn
-from models.model_2d import Encoder, Decoder, Converter
+from models.model import Encoder, Decoder, Converter
 from models.shapeeval import CompoundShapeEval
 from models.CSGlayers import CSG_layer
 

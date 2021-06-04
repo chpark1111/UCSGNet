@@ -1,0 +1,107 @@
+2021-06-02 22:55:32,564:__main__:{'debug': 'False', 'comment': '', 'train': {'model_name': 'UCSGNet_lr{}_latent_sz{}_csglayer{}_dim{}', 'preload_model': 'False', 'pretrain_model_path': 'trained_models/temp1.pth', 'num_dim': '2', 'num_epochs': '200', 'batch_size': '16', 'latent_sz': '256', 'lr': '1e-4', 'optim': 'adam', 'num_shape_type': '8', 'beta1': '0.5', 'beta2': '0.99', 'points_per_sample_in_batch': '1024', 'out_shape_layer': '2', 'threshold': '0.5', 'use_planes': 'False', 'num_csg_layer': '3', 'worker': '4', 'path': 'data/cad/cad.h5'}}
+2021-06-02 22:56:14,306:__main__:Epoch 0/200 => valid_loss: 0.158982, CD: 4.926458, IoU: 39.315266%
+2021-06-02 22:56:14,308:__main__:Saving the Model based on Chamfer Distance: 4.926458
+2021-06-02 22:56:50,378:__main__:Epoch 1/200 => valid_loss: 0.149605, CD: 3.983649, IoU: 43.150518%
+2021-06-02 22:56:50,380:__main__:Saving the Model based on Chamfer Distance: 3.983649
+2021-06-02 22:57:27,004:__main__:Epoch 2/200 => valid_loss: 0.138844, CD: 2.957918, IoU: 48.531363%
+2021-06-02 22:57:27,005:__main__:Saving the Model based on Chamfer Distance: 2.957918
+2021-06-02 22:58:02,136:__main__:Epoch 3/200 => valid_loss: 0.130154, CD: 2.721011, IoU: 50.716996%
+2021-06-02 22:58:02,137:__main__:Saving the Model based on Chamfer Distance: 2.721011
+2021-06-02 22:58:37,974:__main__:Epoch 4/200 => valid_loss: 0.122089, CD: 2.830462, IoU: 48.417418%
+2021-06-02 22:59:14,155:__main__:Epoch 5/200 => valid_loss: 0.113310, CD: 2.599805, IoU: 52.042523%
+2021-06-02 22:59:14,156:__main__:Saving the Model based on Chamfer Distance: 2.599805
+2021-06-02 22:59:46,610:__main__:Epoch 6/200 => valid_loss: 0.105863, CD: 2.393402, IoU: 54.527388%
+2021-06-02 22:59:46,611:__main__:Saving the Model based on Chamfer Distance: 2.393402
+2021-06-02 23:00:19,249:__main__:Epoch 7/200 => valid_loss: 0.098353, CD: 2.306889, IoU: 55.920713%
+2021-06-02 23:00:19,251:__main__:Saving the Model based on Chamfer Distance: 2.306889
+2021-06-02 23:00:51,032:__main__:Epoch 8/200 => valid_loss: 0.090470, CD: 2.263367, IoU: 56.093334%
+2021-06-02 23:00:51,032:__main__:Saving the Model based on Chamfer Distance: 2.263367
+2021-06-02 23:01:23,399:__main__:Epoch 9/200 => valid_loss: 0.082888, CD: 2.218180, IoU: 56.291802%
+2021-06-02 23:01:23,400:__main__:Saving the Model based on Chamfer Distance: 2.218180
+2021-06-02 23:01:58,325:__main__:Epoch 10/200 => valid_loss: 0.075553, CD: 2.026784, IoU: 59.885413%
+2021-06-02 23:01:58,326:__main__:Saving the Model based on Chamfer Distance: 2.026784
+2021-06-02 23:02:32,524:__main__:Epoch 11/200 => valid_loss: 0.066693, CD: 1.641663, IoU: 62.834533%
+2021-06-02 23:02:32,526:__main__:Saving the Model based on Chamfer Distance: 1.641663
+2021-06-02 23:03:05,875:__main__:Epoch 12/200 => valid_loss: 0.055390, CD: 1.313109, IoU: 66.310755%
+2021-06-02 23:03:05,876:__main__:Saving the Model based on Chamfer Distance: 1.313109
+2021-06-02 23:03:42,434:__main__:Epoch 13/200 => valid_loss: 0.044551, CD: 0.950320, IoU: 72.900072%
+2021-06-02 23:03:42,436:__main__:Saving the Model based on Chamfer Distance: 0.950320
+2021-06-02 23:04:15,489:__main__:Epoch 14/200 => valid_loss: 0.035620, CD: 0.836278, IoU: 75.551977%
+2021-06-02 23:04:15,491:__main__:Saving the Model based on Chamfer Distance: 0.836278
+2021-06-02 23:04:48,653:__main__:Epoch 15/200 => valid_loss: 0.620221, CD: 0.722432, IoU: 78.839566%
+2021-06-02 23:04:48,654:__main__:Saving the Model based on Chamfer Distance: 0.722432
+2021-06-02 23:05:24,867:__main__:Epoch 16/200 => valid_loss: 0.599924, CD: 0.773830, IoU: 77.421545%
+2021-06-02 23:05:58,781:__main__:Epoch 17/200 => valid_loss: 0.579998, CD: 0.732316, IoU: 78.335684%
+2021-06-02 23:06:32,444:__main__:Epoch 18/200 => valid_loss: 0.559403, CD: 0.675478, IoU: 79.704517%
+2021-06-02 23:06:32,445:__main__:Saving the Model based on Chamfer Distance: 0.675478
+2021-06-02 23:07:05,554:__main__:Epoch 19/200 => valid_loss: 0.540954, CD: 0.694405, IoU: 79.336740%
+2021-06-02 23:07:40,977:__main__:Epoch 20/200 => valid_loss: 0.520934, CD: 0.646110, IoU: 80.470744%
+2021-06-02 23:07:40,979:__main__:Saving the Model based on Chamfer Distance: 0.646110
+2021-06-02 23:08:14,616:__main__:Epoch 21/200 => valid_loss: 0.501683, CD: 0.644644, IoU: 81.028337%
+2021-06-02 23:08:14,617:__main__:Saving the Model based on Chamfer Distance: 0.644644
+2021-06-02 23:08:49,144:__main__:Epoch 22/200 => valid_loss: 0.482978, CD: 0.649138, IoU: 81.515844%
+2021-06-02 23:09:24,106:__main__:Epoch 23/200 => valid_loss: 0.463187, CD: 0.607833, IoU: 82.263230%
+2021-06-02 23:09:24,107:__main__:Saving the Model based on Chamfer Distance: 0.607833
+2021-06-02 23:09:58,428:__main__:Epoch 24/200 => valid_loss: 0.445138, CD: 0.629514, IoU: 81.442168%
+2021-06-02 23:10:31,838:__main__:Epoch 25/200 => valid_loss: 0.424861, CD: 0.578274, IoU: 82.732956%
+2021-06-02 23:10:31,840:__main__:Saving the Model based on Chamfer Distance: 0.578274
+2021-06-02 23:11:07,375:__main__:Epoch 26/200 => valid_loss: 0.405695, CD: 0.568089, IoU: 83.465727%
+2021-06-02 23:11:07,377:__main__:Saving the Model based on Chamfer Distance: 0.568089
+2021-06-02 23:11:41,397:__main__:Epoch 27/200 => valid_loss: 0.385881, CD: 0.539696, IoU: 84.365617%
+2021-06-02 23:11:41,398:__main__:Saving the Model based on Chamfer Distance: 0.539696
+2021-06-02 23:12:14,692:__main__:Epoch 28/200 => valid_loss: 0.368098, CD: 0.563707, IoU: 84.042081%
+2021-06-02 23:12:47,790:__main__:Epoch 29/200 => valid_loss: 0.349708, CD: 0.569117, IoU: 83.327317%
+2021-06-02 23:13:22,157:__main__:Epoch 30/200 => valid_loss: 0.330507, CD: 0.548769, IoU: 84.151004%
+2021-06-02 23:13:55,727:__main__:Epoch 31/200 => valid_loss: 0.312286, CD: 0.562453, IoU: 83.845286%
+2021-06-02 23:14:28,965:__main__:Epoch 32/200 => valid_loss: 0.295120, CD: 0.596436, IoU: 82.416618%
+2021-06-02 23:15:02,094:__main__:Epoch 33/200 => valid_loss: 0.273481, CD: 0.526463, IoU: 85.131097%
+2021-06-02 23:15:02,096:__main__:Saving the Model based on Chamfer Distance: 0.526463
+2021-06-02 23:15:38,987:__main__:Epoch 34/200 => valid_loss: 0.255077, CD: 0.526097, IoU: 84.484675%
+2021-06-02 23:15:38,988:__main__:Saving the Model based on Chamfer Distance: 0.526097
+2021-06-02 23:16:14,543:__main__:Epoch 35/200 => valid_loss: 0.236644, CD: 0.524515, IoU: 84.999907%
+2021-06-02 23:16:14,544:__main__:Saving the Model based on Chamfer Distance: 0.524515
+2021-06-02 23:16:48,482:__main__:Epoch 36/200 => valid_loss: 0.217291, CD: 0.513451, IoU: 85.352617%
+2021-06-02 23:16:48,483:__main__:Saving the Model based on Chamfer Distance: 0.513451
+2021-06-02 23:17:24,560:__main__:Epoch 37/200 => valid_loss: 0.198324, CD: 0.491179, IoU: 85.751637%
+2021-06-02 23:17:24,561:__main__:Saving the Model based on Chamfer Distance: 0.491179
+2021-06-02 23:18:00,480:__main__:Epoch 38/200 => valid_loss: 0.179747, CD: 0.501679, IoU: 85.703005%
+2021-06-02 23:18:33,903:__main__:Epoch 39/200 => valid_loss: 0.160788, CD: 0.488188, IoU: 85.784045%
+2021-06-02 23:18:33,904:__main__:Saving the Model based on Chamfer Distance: 0.488188
+2021-06-02 23:19:07,394:__main__:Epoch 40/200 => valid_loss: 0.141280, CD: 0.458528, IoU: 86.733439%
+2021-06-02 23:19:07,395:__main__:Saving the Model based on Chamfer Distance: 0.458528
+2021-06-02 23:19:41,970:__main__:Epoch 41/200 => valid_loss: 0.123352, CD: 0.482275, IoU: 85.981215%
+2021-06-02 23:20:15,235:__main__:Epoch 42/200 => valid_loss: 0.103933, CD: 0.460250, IoU: 86.740876%
+2021-06-02 23:20:48,426:__main__:Epoch 43/200 => valid_loss: 0.085962, CD: 0.478935, IoU: 85.976544%
+2021-06-02 23:21:20,829:__main__:Epoch 44/200 => valid_loss: 0.066455, CD: 0.455179, IoU: 86.834367%
+2021-06-02 23:21:20,830:__main__:Saving the Model based on Chamfer Distance: 0.455179
+2021-06-02 23:21:52,963:__main__:Epoch 45/200 => valid_loss: 0.048600, CD: 0.479746, IoU: 86.075109%
+2021-06-02 23:22:25,167:__main__:Epoch 46/200 => valid_loss: 0.029446, CD: 0.471365, IoU: 86.539634%
+2021-06-02 23:23:01,815:__main__:Epoch 47/200 => valid_loss: 0.018838, CD: 0.463284, IoU: 86.155380%
+2021-06-02 23:23:36,251:__main__:Epoch 48/200 => valid_loss: 0.017800, CD: 0.443853, IoU: 86.926729%
+2021-06-02 23:23:36,252:__main__:Saving the Model based on Chamfer Distance: 0.443853
+2021-06-02 23:24:09,476:__main__:Epoch 49/200 => valid_loss: 0.018427, CD: 0.466538, IoU: 86.144881%
+2021-06-02 23:24:43,014:__main__:Epoch 50/200 => valid_loss: 0.017506, CD: 0.436959, IoU: 87.080592%
+2021-06-02 23:24:43,015:__main__:Saving the Model based on Chamfer Distance: 0.436959
+2021-06-02 23:25:20,464:__main__:Epoch 51/200 => valid_loss: 0.017338, CD: 0.433871, IoU: 87.238944%
+2021-06-02 23:25:20,465:__main__:Saving the Model based on Chamfer Distance: 0.433871
+2021-06-02 23:25:55,766:__main__:Epoch 52/200 => valid_loss: 0.019433, CD: 0.484784, IoU: 86.169175%
+2021-06-02 23:26:29,770:__main__:Epoch 53/200 => valid_loss: 0.018173, CD: 0.456627, IoU: 86.261699%
+2021-06-02 23:27:04,268:__main__:Epoch 54/200 => valid_loss: 0.017406, CD: 0.429024, IoU: 87.124659%
+2021-06-02 23:27:04,269:__main__:Saving the Model based on Chamfer Distance: 0.429024
+2021-06-02 23:27:41,367:__main__:Epoch 55/200 => valid_loss: 0.016857, CD: 0.418210, IoU: 87.624672%
+2021-06-02 23:27:41,369:__main__:Saving the Model based on Chamfer Distance: 0.418210
+2021-06-02 23:28:13,503:__main__:Epoch 56/200 => valid_loss: 0.017018, CD: 0.426757, IoU: 87.503077%
+2021-06-02 23:28:40,503:__main__:Epoch 57/200 => valid_loss: 0.017252, CD: 0.432416, IoU: 87.209951%
+2021-06-02 23:29:15,305:__main__:Epoch 58/200 => valid_loss: 0.016944, CD: 0.427007, IoU: 87.431537%
+2021-06-02 23:29:50,646:__main__:Epoch 59/200 => valid_loss: 0.018378, CD: 0.447398, IoU: 86.965924%
+2021-06-02 23:30:21,126:__main__:Epoch 60/200 => valid_loss: 0.018242, CD: 0.452019, IoU: 86.879041%
+2021-06-02 23:30:55,544:__main__:Epoch 61/200 => valid_loss: 0.018591, CD: 0.460105, IoU: 86.503751%
+2021-06-02 23:31:29,464:__main__:Epoch 62/200 => valid_loss: 0.017757, CD: 0.438985, IoU: 86.945976%
+2021-06-02 23:32:01,692:__main__:Epoch 63/200 => valid_loss: 0.017907, CD: 0.447629, IoU: 86.993670%
+2021-06-02 23:32:35,781:__main__:Epoch 64/200 => valid_loss: 0.017428, CD: 0.433585, IoU: 87.269157%
+2021-06-02 23:33:09,691:__main__:Epoch 65/200 => valid_loss: 0.016914, CD: 0.420735, IoU: 87.816969%
+2021-06-02 23:33:44,397:__main__:Epoch 66/200 => valid_loss: 0.017932, CD: 0.449860, IoU: 86.882623%
+2021-06-02 23:34:18,940:__main__:Epoch 67/200 => valid_loss: 0.017094, CD: 0.424819, IoU: 87.587283%
+2021-06-02 23:34:52,197:__main__:Epoch 68/200 => valid_loss: 0.016946, CD: 0.422219, IoU: 87.732310%
+2021-06-02 23:35:25,906:__main__:Epoch 69/200 => valid_loss: 0.016954, CD: 0.424473, IoU: 87.752796%
+2021-06-02 23:36:01,415:__main__:Epoch 70/200 => valid_loss: 0.016858, CD: 0.421146, IoU: 87.779078%

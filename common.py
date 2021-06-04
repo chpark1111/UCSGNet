@@ -1,47 +1,9 @@
 '''
 Copied from https://github.com/kacperkan/ucsgnet
 '''
-import abc
-import logging
-import multiprocessing as mp
-import random
-import typing as t
-from enum import Enum
 
-import numpy as np
 import torch
 import torch.nn as nn
-
-RENDER_SERVER = "http://localhost:8000/render"
-
-SEED = 1337
-THREADS = mp.cpu_count()
-
-torch.manual_seed(SEED)
-np.random.seed(SEED)
-random.seed(SEED)
-
-ConfigType = t.Dict[str, t.Dict[str, t.Any]]
-
-logging.basicConfig(level=logging.INFO)
-
-
-def get_logger(name: str) -> logging.Logger:
-    logger = logging.getLogger(name)
-    formatter = logging.Formatter(
-        fmt="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-    )
-
-    handler = logging.FileHandler("logs/log.log", mode="a")
-    handler.setFormatter(formatter)
-    stream_handler = logging.StreamHandler()
-    stream_handler.setFormatter(formatter)
-
-    logger.addHandler(handler)
-    logger.addHandler(stream_handler)
-
-    return logger
-
 
 FLOAT_EPS = torch.finfo(torch.float32).eps
 RNN_LATENT_SIZE = 256
@@ -82,16 +44,3 @@ class Evaluation3D:
         211,
         388,
     ]
-
-
-class TrainingStage(Enum):
-    INITIAL_TRAINING = 0
-    FINE_TUNING = 1
-    LATENT_CODE_OPTIMIZATION = 2
-
-
-class FeatureExtractor(abc.ABC, nn.Module):
-    @property
-    @abc.abstractmethod
-    def out_features(self):
-        pass

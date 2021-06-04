@@ -9,7 +9,7 @@ model_name = UCSGNet_lr{}_latent_sz{}_csglayer{}_outshape{}_dim{}
 preload_model = False
 
 # path to the pre-trained model
-pretrain_model_path = "trained_models/temp1.pth"
+pretrain_model_path = trained_models/temp1.pth
 
 #Dimension of CSG shape
 num_dim = 2
@@ -30,7 +30,7 @@ lr = 1e-4
 optim = adam
 
 # Number of shapes per type
-num_shape_type = 8
+num_shape_type = 16
 
 # beta1, 2of adam
 beta1 = 0.5
@@ -52,10 +52,10 @@ threshold = 0.5
 use_planes = False
 
 #Number of csg_layers
-num_csg_layer = 3
+num_csg_layer = 2
 
 #Number of worker in dataloader
 worker = 4
 
 #Dataloader path
-path = "data/cad/cad.h5"
+path = data/cad/cad.h5

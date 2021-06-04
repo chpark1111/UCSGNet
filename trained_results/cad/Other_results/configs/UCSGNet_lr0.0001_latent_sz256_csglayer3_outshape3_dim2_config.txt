@@ -9,7 +9,7 @@ model_name = UCSGNet_lr{}_latent_sz{}_csglayer{}_outshape{}_dim{}
 preload_model = False
 
 # path to the pre-trained model
-pretrain_model_path = "trained_models/temp1.pth"
+pretrain_model_path = trained_models/temp1.pth
 
 #Dimension of CSG shape
 num_dim = 2
@@ -36,14 +36,11 @@ num_shape_type = 8
 beta1 = 0.5
 beta2 = 0.99
 
-#Determines the points sampled from data 64, 32, 16(Only used in 3D)
-data_size = 64
-
 # number of sdf sample per batch
 points_per_sample_in_batch = 1024
 
 #Number of output shapes per layer
-out_shape_layer = 2
+out_shape_layer = 3
 
 #Thresholding value for weights. If weight > threshold, 1 else 0
 threshold = 0.5
@@ -58,4 +55,4 @@ num_csg_layer = 3
 worker = 4
 
 #Dataloader path
-path = "data/cad/cad.h5"
+path = data/cad/cad.h5
