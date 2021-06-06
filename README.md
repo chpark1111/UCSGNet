@@ -5,6 +5,17 @@ UCSGNet: Unsupervised Discovering of Constructive Solid Geometry Tree [PaperLink
 Used author codes: Data loader, visualizer
 
 ## Reproducing the results
+### Requirements
+We give the requirements file in the repository. Run below to install them.
+```
+conda create -n ucsgnet python=3.8
+activate ucsgnet
+pip install -r requirements.txt
+```
+Note that in order to run 3D visualization codes, you will have to install pymesh2 manually following [here](https://pymesh.readthedocs.io/en/latest/installation.html)
+not using pip (pip is outdated)
+
+
 ### Download Dataset
 We use 2D CAD same as [CSGNet](https://github.com/hippogriff/CSGNet) and 3D ShapeNet same as [IM-NET](https://github.com/czq142857/IM-NET).All the data can be downloaded [here](https://drive.google.com/drive/folders/17oMAKif1YWAhzOBSvURo6C2vvNgtrS_H?usp=sharing)  
 
