@@ -1,7 +1,6 @@
 '''
-Below visualization code is copied from 
+Below visualization code is adapted from
 https://github.com/kacperkan/ucsgnet/blob/master/ucsgnet/ucsgnet/visualize_2d_predicted_shapes.py
-and modified by me
 '''
 import copy
 import json
@@ -838,7 +837,7 @@ def visualize_synthetic_dataset(model: UCSGNet, img_path: str):
     binarized = model.binarize(output)
     mse_loss = F.mse_loss(binarized, trues).item()
     img_name = Path(img_path).with_suffix("").name
-    out_dir = OUT_DIR / "synthetic" / f"{mse_loss}_{img_name}"
+    out_dir = OUT_DIR / "synthetic" / f"{img_name}_{mse_loss}"
     out_dir.mkdir(exist_ok=True, parents=True)
 
     np_image = cv2.imread(img_path)
@@ -899,8 +898,10 @@ def visualize_cad_dataset(model: UCSGNet, h5_file_path: str):
         shuffle=False,
         num_workers=0,
     )
-
+    sample = np.random.choice(len(loader), 15, replace=False)
     for data_index, (image, points, trues, _) in enumerate(tqdm.tqdm(loader)):
+        if data_index not in sample:
+            continue
         (
             output,
             predicted_shapes_distances,
@@ -916,7 +917,7 @@ def visualize_cad_dataset(model: UCSGNet, h5_file_path: str):
 
         binarized = model.binarize(output)
         mse_loss = F.mse_loss(binarized, trues).item()
-        out_dir = OUT_DIR / "cad" / f"{mse_loss}_{data_index}"
+        out_dir = OUT_DIR / "cad" / f"{data_index}_{mse_loss}"
         out_dir.mkdir(exist_ok=True, parents=True)
         out_dir.mkdir(exist_ok=True)
 

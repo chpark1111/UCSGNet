@@ -138,6 +138,8 @@ def evaluate(
         for idx in pbar:
             class_name = eval_list[idx][0]
             object_name = eval_list[idx][1]
+            '''if object_name not in Evaluation3D.object_to_reconstruct[class_name]:
+                continue'''
             pbar.set_postfix_str(f"{class_name}/{object_name}")
 
             cat_id = Evaluation3D.CATEGORY_IDS.index(class_name)
@@ -226,7 +228,7 @@ def main():
         "--valid_shape_names_file",
         help="A file path containing names of shapes to validate on",
         type=str,
-        required=True,
+        default="data/hdf5/all_vox256_img_test.txt"
     )
     parser.add_argument(
         "--reconstructed_shapes_folder",
@@ -238,13 +240,13 @@ def main():
         "--raw_shapenet_data_folder",
         help="A folder path to ground truth ShapeNet shapes",
         type=str,
-        required=True,
+        default="data/hdf5/",
     )
     parser.add_argument(
         "--ground_truth_point_surface",
         help="A folder path to ground truth sampled points of ShapeNet shapes",
         type=str,
-        required=True,
+        default="data/pointcloud_surface",
     )
     parser.add_argument(
         "--edges_data_folder",
@@ -253,7 +255,7 @@ def main():
             "`generate_edge_data_from_point.py`"
         ),
         type=str,
-        required=True,
+        default="visualized_results/3d/edge"
     )
     parser.add_argument(
         "--out_folder",

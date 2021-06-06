@@ -1,6 +1,5 @@
 '''
-Dataloader code from https://github.com/kacperkan/ucsgnet
-and modified by me
+Dataloader code adapted from https://github.com/kacperkan/ucsgnet
 '''
 import math, os
 import typing as t

@@ -3,7 +3,7 @@ debug = False
 comment = ""
 
 [train]
-model_name = UCSGNet_lr{}_latent_sz{}_csglayer{}_outshape{}_dim{}
+model_name = UCSGNet_lr{}_latent_sz{}_csglayer{}_outshape{}_batch_size{}_data_size{}_dim{}
 
 # Whether to load a pretrained model or not
 preload_model = False
@@ -55,7 +55,7 @@ use_planes = False
 num_csg_layer = 6
 
 #Number of worker in dataloader
-worker = 4
+worker = 2
 
 #Dataloader path
 path = data/hdf5/

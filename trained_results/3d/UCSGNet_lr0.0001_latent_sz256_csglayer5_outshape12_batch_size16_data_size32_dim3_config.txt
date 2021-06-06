@@ -37,7 +37,7 @@ beta1 = 0.5
 beta2 = 0.99
 
 #Determines the points sampled from data 64, 32, 16
-data_size = 64
+data_size = 32
 
 # number of sdf sample per batch
 points_per_sample_in_batch = 1024
@@ -55,7 +55,7 @@ use_planes = False
 num_csg_layer = 5
 
 #Number of worker in dataloader
-worker = 0
+worker = 4
 
 #Dataloader path
 path = data/hdf5/

@@ -1,7 +1,6 @@
 '''
-Below visualization code is copied from 
+Below visualization code is adapted from
 https://github.com/kacperkan/ucsgnet/blob/master/ucsgnet/ucsgnet/reconstruct_3d_shapes.py
-and modified by me
 '''
 
 import copy
@@ -22,6 +21,7 @@ import trimesh.creation
 import trimesh.repair
 
 from utils.read_config import Config
+from common import Evaluation3D
 from dataset import ShapeNet_valid_dataloader
 from models.UCSGNet_3d import UCSGNet
 from models.shapeeval import SquareCubeEval, CircleSphereEval
@@ -501,7 +501,7 @@ def reconstruct_3d(args):
 
     config = Config("3d_config.yml")
     config.batch_size = 1
-    config.data_size = 32
+    config.data_size = 64
     config.worker = 0
     net = UCSGNet(config)
     net.load_state_dict(torch.load(args.weights_path))
@@ -530,6 +530,8 @@ def reconstruct_3d(args):
                 file_names[temp_object_index]
             )
             current_out_dir = out_dir / model_name / instance_name
+            '''if instance_name not in Evaluation3D.object_to_reconstruct[model_name]:
+                continue'''
             if (
                 not current_out_dir.exists()
                 or not (current_out_dir / "csg_path").exists()
@@ -586,7 +588,7 @@ def reconstruct_3d(args):
             write_ply_point_normal(
                 current_out_dir / "pred_pc.ply", points_normals[i]
             )
-
+            current_object_index += 1
             try:
                 for name, mesh in csg_paths[i]:
                     trimesh.Trimesh(mesh.vertices, mesh.faces).export(
@@ -594,5 +596,3 @@ def reconstruct_3d(args):
                     )
             except ValueError:
                 print("Wrong shape")
-
-            current_object_index += 1

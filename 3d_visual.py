@@ -47,7 +47,7 @@ parser.add_argument(
     "--sphere_complexity",
     type=int,
     help="Number of segments lat/lon of the sphere",
-    default=8,
+    default=2,
 )
 args = parser.parse_args()
 reconstruct_3d(args)
