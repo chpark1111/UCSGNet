@@ -5,8 +5,13 @@ UCSGNet: Unsupervised Discovering of Constructive Solid Geometry Tree [PaperLink
 Used author codes: Data loader, visualizer
 
 ## Reproducing the results
+### Clone directory
+```
+git clone https://github.com/chpark1111/UCSG-Net.git
+cd UCSG-Net
+```
 ### Requirements
-We give the requirements file in the repository. Run below to install them.
+I provided the requirements.txt file in the repository. Run below to install them.
 ```
 conda create -n ucsgnet python=3.8
 activate ucsgnet
@@ -17,7 +22,7 @@ not using pip (pip is outdated)
 
 
 ### Download Dataset
-We use 2D CAD same as [CSGNet](https://github.com/hippogriff/CSGNet) and 3D ShapeNet same as [IM-NET](https://github.com/czq142857/IM-NET).All the data can be downloaded [here](https://drive.google.com/drive/folders/17oMAKif1YWAhzOBSvURo6C2vvNgtrS_H?usp=sharing)  
+We use 2D CAD same as [CSGNet](https://github.com/hippogriff/CSGNet) and 3D ShapeNet same as [IM-NET](https://github.com/czq142857/IM-NET). All the data can be downloaded from [here](https://drive.google.com/drive/folders/17oMAKif1YWAhzOBSvURo6C2vvNgtrS_H?usp=sharing)  
 
 ### Data Path Configuration
 All the data file should be placed same as the below.  
@@ -40,18 +45,21 @@ To train the network with 2D CAD dataset, run below
 python3 cad_train.py
 ```
 Evaluation(Chamfer Distance) will be shown with the training  
-
+After training, your model will be saved at trained_models directory.  
 ### Train with 3D ShapeNet dataset
 To train the network with 3D ShapeNet dataset, run below
 ```
 python3 3d_train.py
 ```
+After training, your model will be saved at trained_models directory.  
 
 ### Loading pretrained files
 You can load the pretrained files trained by me.
 Here is the [file](https://drive.google.com/drive/folders/1N1fxEVAoGflmhCyx8nt0G8JvgKdxLftd?usp=sharing)  
 After downloading files or training your network,
-put the train files like below to visualize  
+put the train files like below to visualize.  
+If you want to visualize 2D network that you have  trained, rename the pth file to cad_best.pth and put the file like below.  
+For 3D network, rename the pth file to 3d_best.pth and put them like below  
 - trained_results/
   - 3d/
     - 3d_best.pth
@@ -79,7 +87,7 @@ python3 3d_eval.py
 ```
 
 ### Examples
-Example of 3D reconsturcted shapes are shown here.
+Example of 3D reconsturcted shapes are shown here. (Above: GT, Below: Reconstructed)
 ![img](./README_img/3d_recon.PNG)
 
 TimeLine:  
