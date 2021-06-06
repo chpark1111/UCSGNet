@@ -112,7 +112,6 @@ pyDeprecate==0.3.0
 pyflakes==2.3.0
 Pygments==2.7.4
 PyMCubes==0.1.2
-pymesh2==0.3
 pyOpenSSL @ file:///home/conda/feedstock_root/build_artifacts/pyopenssl_1608055815057/work
 pyparsing==2.4.7
 pyrsistent==0.17.3
