@@ -67,6 +67,9 @@ python3 3d_generate.py
 python3 3d_eval.py
 ```
 
+### Examples
+Example of 3D reconsturcted shapes are shown here.
+![img](./README_img/3d_recon.PNG)
 
 TimeLine:  
 5/5 ∼ 5/19: Implement data generator, encoder, decoder, shapeeval, converter   
