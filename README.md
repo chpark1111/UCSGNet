@@ -90,6 +90,7 @@ python3 3d_eval.py
 Example of 3D reconsturcted shapes are shown here. (Above: GT, Below: Reconstructed)
 ![img](./README_img/3d_recon.PNG)
 
+
 TimeLine:  
 5/5 ∼ 5/19: Implement data generator, encoder, decoder, shapeeval, converter   
 5/19 ∼ 5/26: Implement rest of the model, utility functions(i.e. loss, gumbelsoftmax, etc)  
