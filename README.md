@@ -22,7 +22,7 @@ not using pip (pip is outdated)
 
 
 ### Download Dataset
-We use 2D CAD same as [CSGNet](https://github.com/hippogriff/CSGNet) and 3D ShapeNet same as [IM-NET](https://github.com/czq142857/IM-NET). All the data can be downloaded from [here](https://drive.google.com/drive/folders/17oMAKif1YWAhzOBSvURo6C2vvNgtrS_H?usp=sharing)  
+We use 2D CAD same as [CSGNet](https://github.com/hippogriff/CSGNet) and 3D ShapeNet same as [IM-NET](https://github.com/czq142857/IM-NET). All the data can be downloaded from [here](https://drive.google.com/drive/folders/1rvpONzk4sLA_gGcAg73nqCZ8WMN9nk1n?usp=sharing)  
 
 ### Data Path Configuration
 All the data file should be placed same as the below.  
@@ -55,7 +55,7 @@ After training, your model will be saved at trained_models directory.
 
 ### Loading pretrained files
 You can load the pretrained files trained by me.
-Here is the [file](https://drive.google.com/drive/folders/1N1fxEVAoGflmhCyx8nt0G8JvgKdxLftd?usp=sharing)  
+Here is the [file](https://drive.google.com/drive/folders/1zFCe7it9W3s4y6QVK-qUwgwCAIzesQln?usp=sharing)  
 After downloading files or training your network,
 put the train files like below to visualize.  
 If you want to visualize 2D network that you have  trained, rename the pth file to cad_best.pth and put the file like below.  
