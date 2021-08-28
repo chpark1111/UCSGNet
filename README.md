@@ -1,5 +1,6 @@
 # UCSGNet: Unsupervised Discovering of Constructive Solid Geometry Tree
 Reproducing Published Papers  
+# (NeurIPS 20)
 UCSGNet: Unsupervised Discovering of Constructive Solid Geometry Tree [PaperLink](https://arxiv.org/abs/2006.09102)  
 
 Used author codes: Data loader, visualizer
